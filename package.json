@@ -1,0 +1,40 @@
+{
+  "name": "vault-k8s-login-action",
+  "version": "1.0.0",
+  "description": "Authenticates to Vault using a GitHub token in order to load credentials for a Kubernetes cluster",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "prettier --check . && eslint && jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omelette-gay/vault-k8s-login-action.git"
+  },
+  "keywords": [
+    "vault",
+    "k8s",
+    "github-actions"
+  ],
+  "author": "Chris Northwood <chrisn@chrisn.xyz>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/omelette-gay/vault-k8s-login-action/issues"
+  },
+  "homepage": "https://github.com/omelette-gay/vault-k8s-login-action#readme",
+  "engines": {
+    "node": "^20.9.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@tsconfig/node20": "^20.1.5",
+    "@types/jest": "^29.5.14",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.3.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.28.0"
+  }
+}
