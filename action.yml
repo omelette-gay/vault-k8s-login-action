@@ -10,7 +10,6 @@ inputs:
     default: github
   vault-github-role:
     description: The Vault role of the OIDC auth provider which the action will log in to Vault with
-    required: true
   vault-k8s-mountpoint:
     description: The Vault mountpoint of the secrets engine which provides k8s credentials
     required: true
