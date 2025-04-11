@@ -15,6 +15,7 @@ by default. So to prepare a release:
 - `npm install`
 - `rm -f .gitignore`
 - `npm run build`
+- `npm prune --production`
 - `git commit -a "release v1.x.x"`
 - `git tag v1.x.x`
 - `git tag -f v1`

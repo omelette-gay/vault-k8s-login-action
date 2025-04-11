@@ -1,0 +1,36 @@
+name: Vault k8s login action
+description: Obtain k8s credentials from Vault using GitHub auth
+inputs:
+  vault-server:
+    description: The URL of the Vault server to access (e.g., https://vault.example.com/)
+    required: true
+  vault-github-mountpoint:
+    description: The Vault mountpoint of the OIDC auth provider configured to trust GitHub
+    required: true
+    default: github
+  vault-github-role:
+    description: The Vault role of the OIDC auth provider which the action will log in to Vault with
+    required: true
+  vault-k8s-mountpoint:
+    description: The Vault mountpoint of the secrets engine which provides k8s credentials
+    required: true
+    default: kubernetes
+  vault-k8s-role:
+    description: The name of the Vault role in the k8s secrets engine which credentials will be obtained for
+    required: true
+  vault-k8s-namespace:
+    description: The k8s namespace to request credentials for from Vault
+    required: true
+    default: default
+  k8s-controller-url:
+    description: The URL to the Kube controller which will be embedded in the kubeconfig
+    required: true
+  k8s-controller-ca:
+    description: A .pem encoded certificate file corresponding to the trust CA for the kube controller.
+    required: true
+outputs:
+  kubeconfig:
+    description: A Kubeconfig file which is authenticated for this cluster
+runs:
+  using: node20
+  main: index.js
