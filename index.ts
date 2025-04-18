@@ -24,7 +24,7 @@ async function authenticateToVault({
 
   if (response.message.statusCode !== HttpCodes.OK) {
     throw new VaultError(
-      `Unexpected response from Vault when authenticating: ${response.message.statusCode}`,
+      `Unexpected response from ${vaultServer}/v1/auth/${authMountpoint}/login when authenticating: ${response.message.statusCode}`,
     );
   }
 
@@ -58,7 +58,7 @@ async function obtainK8sCredentials({
 
   if (response.message.statusCode !== HttpCodes.OK) {
     throw new VaultError(
-      `Unexpected response from Vault when obtaining k8s credentials: ${response.message.statusCode}`,
+      `Unexpected response from ${vaultServer}/v1/${k8sMountpoint}/creds/${k8sRole} when obtaining k8s credentials: ${response.message.statusCode}`,
     );
   }
 
