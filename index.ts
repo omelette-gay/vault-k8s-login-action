@@ -1,6 +1,5 @@
 import { getInput, getIDToken, setSecret, setOutput } from "@actions/core";
 import { HttpClient, HttpCodes } from "@actions/http-client";
-import { BearerCredentialHandler } from "@actions/http-client/lib/auth";
 
 class VaultError extends Error {}
 
@@ -41,12 +40,14 @@ async function authenticateToVault({
 async function obtainK8sCredentials({
   httpClient,
   vaultServer,
+  vaultToken,
   k8sMountpoint,
   k8sRole,
   k8sNamespace,
 }: {
   httpClient: HttpClient;
   vaultServer: string;
+  vaultToken: string;
   k8sMountpoint: string;
   k8sRole: string;
   k8sNamespace?: string;
@@ -54,6 +55,7 @@ async function obtainK8sCredentials({
   const response = await httpClient.post(
     `${vaultServer}/v1/${k8sMountpoint}/creds/${k8sRole}`,
     JSON.stringify({ kubernetes_namespace: k8sNamespace }),
+    { authorization: `Bearer ${vaultToken}` },
   );
 
   if (response.message.statusCode !== HttpCodes.OK) {
@@ -86,13 +88,12 @@ getIDToken()
     }),
   )
   .then((vaultToken) => {
-    const authHandler = new BearerCredentialHandler(vaultToken);
-    httpClient.handlers.push(authHandler);
     setSecret(vaultToken);
 
     return obtainK8sCredentials({
       httpClient,
       vaultServer,
+      vaultToken,
       k8sMountpoint: getInput("vault-k8s-mountpoint", { required: true }),
       k8sRole: getInput("vault-k8s-role", { required: true }),
       k8sNamespace: getInput("vault-k8s-namespace"),
