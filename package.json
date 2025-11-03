@@ -1,6 +1,6 @@
 {
   "name": "vault-k8s-login-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Authenticates to Vault using a GitHub token in order to load credentials for a Kubernetes cluster",
   "main": "index.js",
   "scripts": {
