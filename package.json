@@ -26,10 +26,10 @@
     "node": "^20.9.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
+    "@eslint/js": "^9.39.0",
     "@tsconfig/node20": "^20.1.6",
     "@types/jest": "^30.0.0",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.0",
     "eslint-config-prettier": "^10.1.8",
     "jest": "^30.2.0",
     "prettier": "^3.6.2",
