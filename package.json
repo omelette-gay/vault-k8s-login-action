@@ -33,14 +33,14 @@
     "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "jest": "^30.3.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "ts-jest": "^29.4.9",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.58.0"
+    "typescript-eslint": "^8.58.1"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
-    "@actions/github": "^9.0.0",
+    "@actions/github": "^9.1.0",
     "@actions/http-client": "^4.0.0"
   }
 }
