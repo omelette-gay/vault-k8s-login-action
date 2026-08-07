@@ -44,16 +44,25 @@ async function obtainK8sCredentials({
   k8sMountpoint,
   k8sRole,
   k8sNamespace,
+  clusterRoleBinding,
 }: {
   httpClient: HttpClient;
   vaultServer: string;
   k8sMountpoint: string;
   k8sRole: string;
   k8sNamespace?: string;
+  clusterRoleBinding: boolean;
 }): Promise<string> {
+  const requestBody: { [key: string]: string | boolean | undefined } = {
+    kubernetes_namespace: k8sNamespace,
+  };
+  if (clusterRoleBinding) {
+    requestBody.cluster_role_binding = true;
+  }
+
   const response = await httpClient.post(
     `${vaultServer}/v1/${k8sMountpoint}/creds/${k8sRole}`,
-    JSON.stringify({ kubernetes_namespace: k8sNamespace }),
+    JSON.stringify(requestBody),
   );
 
   if (response.message.statusCode !== HttpCodes.OK) {
@@ -96,6 +105,7 @@ getIDToken()
       k8sMountpoint: getInput("vault-k8s-mountpoint", { required: true }),
       k8sRole: getInput("vault-k8s-role", { required: true }),
       k8sNamespace: getInput("vault-k8s-namespace"),
+      clusterRoleBinding: getInput("cluster-role-binding") == "true",
     });
   })
   .then((k8sToken) => {
