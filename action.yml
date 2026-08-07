@@ -21,6 +21,10 @@ inputs:
     description: The k8s namespace to request credentials for from Vault
     required: true
     default: default
+  cluster-role-binding:
+    description: request for the credentials to be bound to a cluster role
+    required: true
+    default: "false"
   k8s-controller-url:
     description: The URL to the Kube controller which will be embedded in the kubeconfig
     required: true
