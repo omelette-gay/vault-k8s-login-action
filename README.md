@@ -4,7 +4,7 @@ Authenticates to Vault using a GitHub token in order to load credentials for a K
 
 ## Dev quick start
 
-- Have Node 20 installed
+- Have Node 24 installed
 - `npm install`
 - `npm test`
 

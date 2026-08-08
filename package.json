@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/omelette-gay/vault-k8s-login-action#readme",
   "engines": {
-    "node": "^20.9.0"
+    "node": "^24.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
